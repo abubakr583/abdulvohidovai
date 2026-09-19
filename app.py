@@ -1,16 +1,24 @@
-from flask import Flask, render_template_string, request, jsonify, abort
+import os
+from flask import Flask, abort, jsonify, render_template_string, request
 from google import genai
 
 app = Flask(__name__)
 
-# Gemini API kaliti
-GEMINI_API_KEY = "AQ.Ab8RN6Kr3ubGfWdFlflpLRKLJd3vcmlZvCwuJ2FBZpXEgUrt_g"
+# Render sozlamalaridan kalitni o'qib olish
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AQ.Ab8RN6Lf7SBvhTpNIy0vLImLlUlrylsVMfYYGrcfIMXRYAN6JA")
 
 # Aloqa profillari
 TELEGRAM_USER = "vip_abdulvohidov"
 INSTAGRAM_USER = "_abhvdv11"
 
-ai_client = genai.Client(api_key=GEMINI_API_KEY)
+# Yangi kalit formatini tekshirish va ulash
+try:
+    if GEMINI_API_KEY.startswith("AQ."):
+        ai_client = genai.Client(http_options={'headers': {'Authorization': f'Bearer {GEMINI_API_KEY}'}})
+    else:
+        ai_client = genai.Client(api_key=GEMINI_API_KEY)
+except Exception:
+    ai_client = genai.Client(api_key=GEMINI_API_KEY)
 
 DARSLIKLAR = {
     "python-asoslari": {
