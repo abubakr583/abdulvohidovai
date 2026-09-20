@@ -6,83 +6,16 @@ app = Flask(__name__)
 TELEGRAM_USER = "vip_abdulvohidov"
 INSTAGRAM_USER = "_abhvdv11"
 
-# Barcha xizmatlar ro'yxati
-SERVICES = [
-    {
-        "title": "Figma: Logotip & Brending",
-        "category": "Dizayn Xizmati",
-        "badge_class": "badge-figma",
-        "icon": "fa-bezier-curve",
-        "desc": "Kompaniya, Telegram kanallar va bizneslar uchun zamonaviy vektor logotiplar, favicon va firma uslubini noldan chizish.",
-        "order_msg": "Salom, menga logotip va brending xizmati kerak edi."
-    },
-    {
-        "title": "Figma: Sayt & Ilova UI/UX Dizayni",
-        "category": "Dizayn Xizmati",
-        "badge_class": "badge-figma",
-        "icon": "fa-mobile-screen-button",
-        "desc": "Zamonaviy veb-saytlar, mobil ilovalar va lending sahifalar uchun Auto Layout asosida moslashuvchan interfeys dizayni.",
-        "order_msg": "Salom, menga veb-sayt yoki mobil ilova dizayni kerak edi."
-    },
-    {
-        "title": "Telegram Stars Savdo Boti",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-star",
-        "desc": "Telegram Stars valyutasi orqali raqamli mahsulotlar, obunalar yoki yulduzlar savdosi uchun avtomatlashtirilgan xavfsiz bot.",
-        "order_msg": "Salom, menga Telegram Stars savdo boti kerak edi."
-    },
-    {
-        "title": "Kino & Seriallar Boti",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-film",
-        "desc": "Kinolar kodi bo'yicha qidiruv, majburiy kanalga a'zolik (obuna tekshirish), katta kino bazasiga ega tezkor bot.",
-        "order_msg": "Salom, menga Kino bot yaratish xizmati kerak edi."
-    },
-    {
-        "title": "SMM & Nakrutka Boti",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-chart-line",
-        "desc": "Telegram, Instagram va TikTok uchun obunachi, layk va ko'rishlar buyurtma qilish va hisob to'ldirish tizimli bot.",
-        "order_msg": "Salom, menga SMM nakrutka boti kerak edi."
-    },
-    {
-        "title": "Telegram Bot Builder (Konstruktor)",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-cubes",
-        "desc": "Foydalanuvchilar o'zlarining shaxsiy botlarini hech qanday kodsiz yaratishi va boshqarishi uchun konstruktor bot.",
-        "order_msg": "Salom, menga Bot Builder tizimi kerak edi."
-    },
-    {
-        "title": "VIP Kanal & Avto-to'lov Boti",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-money-bill-wave",
-        "desc": "Yopiq Telegram guruh va kanallarga oylik pullik obunalarni qabul qilish (Click, Payme) va muddati tugagach avtomatik chiqarish.",
-        "order_msg": "Salom, menga pullik VIP kanal uchun avto-to'lov boti kerak edi."
-    },
-    {
-        "title": "Internet Magazin (E-Commerce) Boti",
-        "category": "Bot Xizmati",
-        "badge_class": "badge-tg",
-        "icon": "fa-cart-shopping",
-        "desc": "Tovarlar katalogi, savatcha (korzina), yetkazib berish manzili va to'lov integratsiyasiga ega to'liq do'kon boti.",
-        "order_msg": "Salom, menga Telegram do'kon boti kerak edi."
-    }
-]
-
-# 20 ta darslik bazasi
+# 20 ta to'liq darsliklar bazasi
 LESSONS = {
+    # 1. SCRATCH
     "scratch-intro": {
         "title": "1. Scratch Asoslari: Vizual Bloklar va Spritelar",
         "category": "Scratch",
         "time": "10 daqiqa",
         "badge_class": "badge-scratch",
         "desc": "Dasturlash mantig'iga kirish: Sprite, sahna va rangli bloklar bilan ishlash.",
-        "content": "<h3>Scratch nima?</h3><p>Scratch — blokli dasturlash tili bo'lib, algoritmik fikrlashni shakllantirish uchun dunyodagi eng zo'r platformadir.</p>"
+        "content": "<h3>Scratch nima?</h3><p>Scratch — blokli vizual dasturlash tili bo'lib, o'yinlar yaratish orqali algoritmik fikrlashni o'rgatadi.</p>"
     },
     "scratch-variables-game": {
         "title": "2. Scratch'da O'zgaruvchilar va Birinchi O'yin",
@@ -90,8 +23,10 @@ LESSONS = {
         "time": "15 daqiqa",
         "badge_class": "badge-scratch",
         "desc": "O'yinlarda ochko hisoblash (Score), jonlar va sensorlar.",
-        "content": "<h3>O'zgaruvchilar</h3><p>O'yinda ochko, vaqt va jonlarni saqlash mexanizmlari.</p>"
+        "content": "<h3>O'yin Mantig'i</h3><p>Ochkolar yig'ish va to'siqlarga tekkanda o'yinni boshqarish algoritmi.</p>"
     },
+
+    # 2. PYTHON ASOSLARI
     "python-intro": {
         "title": "3. Python Sintaksisi va Data Types",
         "category": "Python Asoslari",
@@ -154,15 +89,17 @@ LESSONS = {
         "time": "14 daqiqa",
         "badge_class": "badge-python",
         "desc": "Fayllarga yozish va xatoliklarni xavfsiz boshqarish.",
-        "content": "<h3>Fayllar bilan ishlash</h3><pre><code>with open('data.txt', 'w') as f:\\n    f.write('Salom')</code></pre>"
+        "content": "<h3>Fayllar</h3><pre><code>with open('data.txt', 'w') as f:\\n    f.write('Salom')</code></pre>"
     },
+
+    # 3. TELEGRAM BOTLAR
     "tgbot-setup": {
         "title": "11. aiogram 3: Bot Arxitekturasi",
         "category": "Telegram Bot",
         "time": "15 daqiqa",
         "badge_class": "badge-tg",
         "desc": "aiogram 3 o'rnatish, dispatcher va asinxron arxitektura.",
-        "content": "<h3>aiogram 3</h3><p>Zamonaviy asinxron Telegram botlar poydevori.</p>"
+        "content": "<h3>aiogram 3</h3><p>Zamonaviy tezkor Telegram botlar asosi.</p>"
     },
     "tgbot-keyboards": {
         "title": "12. Inline va Reply Tugmalar",
@@ -170,7 +107,7 @@ LESSONS = {
         "time": "16 daqiqa",
         "badge_class": "badge-tg",
         "desc": "Tugmali menyular, callback_data va havolalar ulash.",
-        "content": "<h3>Inline Tugmalar</h3><p>Foydalanuvchi qulayligi uchun klaviaturalar.</p>"
+        "content": "<h3>Inline Keyboards</h3><p>Tugmali interfeys yaratish tartibi.</p>"
     },
     "tgbot-database": {
         "title": "13. Botga SQLite Bazasini Ulanish",
@@ -178,7 +115,7 @@ LESSONS = {
         "time": "18 daqiqa",
         "badge_class": "badge-tg",
         "desc": "Foydalanuvchilarni saqlash va tekshirish tizimi.",
-        "content": "<h3>SQLite Baza</h3><pre><code>CREATE TABLE users (id INT, ism TEXT)</code></pre>"
+        "content": "<h3>SQLite</h3><pre><code>CREATE TABLE users (id INT, ism TEXT)</code></pre>"
     },
     "tgbot-payments": {
         "title": "14. Telegram Stars va To'lovlar",
@@ -186,15 +123,17 @@ LESSONS = {
         "time": "20 daqiqa",
         "badge_class": "badge-tg",
         "desc": "Bot orqali avtomatlashtirilgan to'lovlarni qabul qilish.",
-        "content": "<h3>To'lovlar</h3><p>Telegram Stars orqali tezkor savdo tizimi.</p>"
+        "content": "<h3>To'lovlar</h3><p>Telegram Stars orqali tezkor savdo qilish usuli.</p>"
     },
+
+    # 4. FIGMA UI/UX
     "figma-intro": {
         "title": "15. Figma Asoslari va Frame'lar",
         "category": "Figma UI/UX",
         "time": "12 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Interfeys, Frame (F), Shape va loyiha strukturasini qurish.",
-        "content": "<h3>Figma Vositalari</h3><p>Desktop va Mobile o'lchamlari bilan to'g'ri ishlash.</p>"
+        "content": "<h3>Figma Asoslari</h3><p>Desktop va Mobile ramkalar bilan ishlash.</p>"
     },
     "figma-autolayout": {
         "title": "16. Auto Layout (Shift + A) Sehri",
@@ -202,7 +141,7 @@ LESSONS = {
         "time": "16 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Elementlarni responsive qilish va moslashuvchan tugmalar.",
-        "content": "<h3>Auto Layout</h3><p>Har qanday elementni moslashuvchan konteynerga aylantirish.</p>"
+        "content": "<h3>Auto Layout</h3><p>Elementlarni avtomatik cho'ziluvchan qilish siri.</p>"
     },
     "figma-components": {
         "title": "17. Komponentlar va Variantlar",
@@ -210,7 +149,7 @@ LESSONS = {
         "time": "15 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Master Komponentlar va yagona dizayn tizimi.",
-        "content": "<h3>Komponentlar</h3><p>Bitta o'zgartirish bilan butun loyihani yangilash.</p>"
+        "content": "<h3>Komponentlar</h3><p>Bitta o'zgartirish bilan butun dizaynni boshqarish.</p>"
     },
     "figma-typography-colors": {
         "title": "18. Tipografika va Qorong'u Mavzu",
@@ -218,7 +157,7 @@ LESSONS = {
         "time": "14 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Kontrast qoidalari, neon ranglar va to'g'ri shriftlar.",
-        "content": "<h3>Ranglar Tanlash</h3><p>Ko'zni charchatmaydigan qorong'u rejim dizayni.</p>"
+        "content": "<h3>Ranglar</h3><p>Zamonaviy Dark Theme yaratish qoidalari.</p>"
     },
     "figma-prototyping": {
         "title": "19. Prototip Yasash va Smart Animate",
@@ -226,7 +165,7 @@ LESSONS = {
         "time": "16 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Sahifalarni o'zaro bog'lash va animatsiyalar.",
-        "content": "<h3>Prototip</h3><p>Dizaynni bosiladigan va jonli ko'rinishga keltirish.</p>"
+        "content": "<h3>Prototip</h3><p>Dizaynni bosiladigan va jonli holatga keltirish.</p>"
     },
     "figma-to-code": {
         "title": "20. Figma'dan Toza CSS Kodga O'tkazish",
@@ -234,7 +173,7 @@ LESSONS = {
         "time": "18 daqiqa",
         "badge_class": "badge-figma",
         "desc": "Dev Mode, box-shadow va dizaynni kodga ko'chirish.",
-        "content": "<h3>Dev Mode</h3><p>Figma elementlarini brauzer uchun CSS ga aylantirish.</p>"
+        "content": "<h3>CSS Eksport</h3><p>Figma elementlarini brauzer kodiga aylantirish.</p>"
     }
 }
 
@@ -244,7 +183,7 @@ INDEX_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulvohidov Academy & IT Services</title>
+    <title>Abdulvohidov Academy & Services</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -295,18 +234,6 @@ INDEX_TEMPLATE = """
             text-transform: uppercase;
         }
 
-        .section-heading {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #38bdf8;
-            border-bottom: 2px solid rgba(0, 242, 254, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
         .btn-telegram {
             background: #229ED9;
             color: #fff;
@@ -335,7 +262,7 @@ INDEX_TEMPLATE = """
             color: #fff;
         }
 
-        .custom-card {
+        .lesson-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
@@ -346,7 +273,7 @@ INDEX_TEMPLATE = """
             justify-content: space-between;
             transition: all 0.35s ease;
         }
-        .custom-card:hover {
+        .lesson-card:hover {
             transform: translateY(-6px);
             border-color: rgba(0, 242, 254, 0.4);
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
@@ -409,25 +336,6 @@ INDEX_TEMPLATE = """
             box-shadow: 0 0 28px rgba(0, 242, 254, 0.85);
         }
 
-        .btn-order {
-            display: block;
-            text-align: center;
-            background: linear-gradient(90deg, #10b981, #059669, #10b981);
-            background-size: 200% auto;
-            color: #ffffff;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 10px;
-            padding: 11px 20px;
-            box-shadow: 0 0 18px rgba(16, 185, 129, 0.45);
-            transition: all 0.3s ease;
-        }
-        .btn-order:hover {
-            color: #ffffff;
-            transform: scale(1.02);
-            box-shadow: 0 0 28px rgba(16, 185, 129, 0.8);
-        }
-
         @keyframes glowingEffect {
             0% { background-position: 0% 50%; box-shadow: 0 0 15px rgba(0, 242, 254, 0.45); }
             50% { background-position: 100% 50%; box-shadow: 0 0 26px rgba(0, 242, 254, 0.8); }
@@ -441,6 +349,34 @@ INDEX_TEMPLATE = """
             padding: 24px;
             text-align: center;
         }
+
+        /* O'ng tomondagi yagona ixcham xizmatlar bloki */
+        .services-unified-box {
+            background: #0f172a;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .btn-order-glow {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #10b981, #059669, #10b981);
+            background-size: 200% auto;
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            transition: all 0.3s ease;
+        }
+        .btn-order-glow:hover {
+            color: #ffffff;
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.9);
+        }
     </style>
 </head>
 <body class="py-4">
@@ -449,7 +385,7 @@ INDEX_TEMPLATE = """
         <header class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3 pb-3 border-bottom border-secondary border-opacity-25">
             <div>
                 <h2 class="header-title mb-1">⚡ ABDULVOHIDOV ACADEMY & SERVICES</h2>
-                <p class="text-secondary small mb-0">Professional Ta'lim & Tayyor IT Xizmatlari</p>
+                <p class="text-secondary small mb-0">Professional Dasturlash Portali & IT Xizmatlari Markazi</p>
             </div>
             <div class="d-flex gap-2">
                 <a href="https://t.me/{{ tg_user }}" target="_blank" class="btn btn-telegram px-3 py-2">
@@ -462,72 +398,41 @@ INDEX_TEMPLATE = """
         </header>
 
         <div class="row g-4">
-            <!-- ASOSIY QISM (XIZMATLAR VA DARSLAR) -->
+            <!-- CHAP TOMON: BARCHA 20 TA DARSLIK -->
             <div class="col-lg-8">
-                
-                <!-- 1. XIZMATLAR BLOKI -->
-                <div class="mb-5">
-                    <div class="section-heading">
-                        <i class="fas fa-briefcase text-info"></i>
-                        <span>Bizning Xizmatlarimiz (Buyurtma Berish)</span>
-                    </div>
-                    <div class="row g-3">
-                        {% for s in services %}
-                        <div class="col-md-6">
-                            <div class="custom-card">
-                                <div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="{{ s.badge_class }}">{{ s.category }}</span>
-                                        <i class="fas {{ s.icon }} text-info fs-5"></i>
-                                    </div>
-                                    <h5 class="fw-bold mb-2">{{ s.title }}</h5>
-                                    <p class="text-secondary small mb-4">{{ s.desc }}</p>
-                                </div>
-                                <a href="https://t.me/{{ tg_user }}?text={{ s.order_msg }}" target="_blank" class="btn-order">
-                                    <i class="fab fa-telegram me-1"></i> Buyurtma berish &rarr;
-                                </a>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
+                <div class="d-flex align-items-center gap-2 mb-4 pb-2 border-bottom border-secondary border-opacity-25">
+                    <i class="fas fa-graduation-cap text-info fs-4"></i>
+                    <h4 class="fw-bold mb-0 text-white">Barcha O'quv Darsliklari (20 ta Dars)</h4>
                 </div>
 
-                <!-- 2. TA'LIM PORTALI (20 TA DARSLIK) -->
-                <div>
-                    <div class="section-heading">
-                        <i class="fas fa-graduation-cap text-warning"></i>
-                        <span>O'quv Darsliklari (20 ta Amaliy Dars)</span>
-                    </div>
-                    <div class="row g-3">
-                        {% for key, item in lessons.items() %}
-                        <div class="col-md-6">
-                            <div class="custom-card">
-                                <div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="{{ item.badge_class }}">{{ item.category }}</span>
-                                        <span class="text-secondary small"><i class="far fa-clock"></i> {{ item.time }}</span>
-                                    </div>
-                                    <h5 class="fw-bold mb-2">{{ item.title }}</h5>
-                                    <p class="text-secondary small mb-4">{{ item.desc }}</p>
+                <div class="row g-3">
+                    {% for key, item in lessons.items() %}
+                    <div class="col-md-6">
+                        <div class="lesson-card">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="{{ item.badge_class }}">{{ item.category }}</span>
+                                    <span class="text-secondary small"><i class="far fa-clock"></i> {{ item.time }}</span>
                                 </div>
-                                <a href="/lesson/{{ key }}" class="btn-glow">Darsni O'qish &rarr;</a>
+                                <h5 class="fw-bold mb-2">{{ item.title }}</h5>
+                                <p class="text-secondary small mb-4">{{ item.desc }}</p>
                             </div>
+                            <a href="/lesson/{{ key }}" class="btn-glow">Darsni O'qish &rarr;</a>
                         </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
-
             </div>
 
-            <!-- O'NG TOMON: SHAXSIY PROFIL -->
+            <!-- O'NG TOMON: PROFIL VA HAMMASI BITTA JOYDA BO'LGAN XIZMATLAR BLOKI -->
             <div class="col-lg-4">
-                <div class="profile-card mb-4 sticky-top" style="top: 20px;">
+                <div class="profile-card mb-4">
                     <div class="mb-3">
                         <i class="fas fa-laptop-code fa-4x text-info"></i>
                     </div>
                     <h4 class="fw-bold mb-1">Abdulvohidov</h4>
                     <p class="text-secondary small mb-3">Full-Stack & UI/UX Developer</p>
-                    <p class="small text-light">Telegram botlar yaratish, Figma'da professional brending va veb-dasturlash bo'yicha buyurtmalarni qabul qilaman.</p>
+                    <p class="small text-light">Python, Telegram Botlar, Scratch va Figma bo'yicha professional ta'lim va shaxsiy buyurtmalar.</p>
                     <hr class="border-secondary my-3">
                     <div class="d-grid gap-2">
                         <a href="https://t.me/{{ tg_user }}" target="_blank" class="btn btn-telegram py-2">
@@ -538,9 +443,60 @@ INDEX_TEMPLATE = """
                         </a>
                     </div>
                 </div>
+
+                <!-- O'NG TOMONDAGI BO'SH JOYNI TO'LDIRUVCHI XIZMATLAR BLOKI -->
+                <div class="services-unified-box sticky-top" style="top: 20px;">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fas fa-briefcase text-success fs-4"></i>
+                        <h5 class="fw-bold mb-0 text-white">Xizmatlarimiz & Buyurtma</h5>
+                    </div>
+                    <p class="text-secondary small mb-3">Quyidagi xizmat turini tanlang va to'g'ridan-to'g'ri lichkaga buyurtma bering:</p>
+
+                    <div class="mb-3">
+                        <label class="small text-light mb-1 fw-bold">Xizmat turini tanlang:</label>
+                        <select class="form-select bg-dark text-white border-secondary" id="serviceSelector" onchange="updateServiceInfo()">
+                            <!-- Figma guruhi -->
+                            <optgroup label="🎨 Figma & UI/UX Dizayn">
+                                <option value="logo" data-desc="Kanal, brend yoki kompaniya uchun original vektor logotip va to'liq dizayn tayyorlash." data-msg="Assalomu alaykum, menga Figma'da Logotip / Rasm yaratish xizmati kerak edi.">Figma: Logotip & Rasm yaratish</option>
+                                <option value="uiux" data-desc="Veb-sayt, lenta, lending yoki mobil ilovalar uchun zamonaviy interfeys chizish." data-msg="Assalomu alaykum, menga Sayt yoki Ilova dizayni kerak edi.">Figma: Veb-sayt & Ilova UI/UX</option>
+                            </optgroup>
+                            <!-- Bot guruhi -->
+                            <optgroup label="🤖 Telegram Botlar">
+                                <option value="kino" data-desc="Kinolar kodi bo'yicha qidiruv, majburiy kanal a'zoligi va tezkor kino yuklab beruvchi bot." data-msg="Assalomu alaykum, menga Kino bot yaratish xizmati kerak edi.">Kino & Seriallar Boti</option>
+                                <option value="stars" data-desc="Telegram Stars xavfsiz savdosi va yulduzlar orqali to'lov qabul qiluvchi avtomat bot." data-msg="Assalomu alaykum, menga Telegram Stars savdo boti kerak edi.">Telegram Stars Savdo Boti</option>
+                                <option value="smm" data-desc="Obunachi, layk, ko'rishlar buyurtmasi va hisob to'ldirish tizimli avtomat nakrutka boti." data-msg="Assalomu alaykum, menga SMM Nakrutka boti kerak edi.">SMM & Nakrutka Boti</option>
+                                <option value="builder" data-desc="Foydalanuvchilar o'zlari uchun kodsiz bot yarata oladigan konstruktor platforma boti." data-msg="Assalomu alaykum, menga Telegram Bot Builder boti kerak edi.">Telegram Bot Builder</option>
+                                <option value="vip" data-desc="Pullik kanallarga avtomatik obuna qabul qilish (Click, Payme) va muddatli chiqarish boti." data-msg="Assalomu alaykum, menga VIP kanal to'lov boti kerak edi.">VIP Kanal & Avto-to'lov Boti</option>
+                                <option value="magazin" data-desc="Katalog, tovar savatchasi va yetkazib berish tizimiga ega e-commerce internet do'kon boti." data-msg="Assalomu alaykum, menga Telegram Do'kon boti kerak edi.">Internet Magazin (Do'kon) Boti</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Tanlangan xizmat ta'rifi -->
+                    <div class="p-3 mb-3 rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                        <p class="small text-info mb-0" id="serviceDesc">Kanal, brend yoki kompaniya uchun original vektor logotip va to'liq dizayn tayyorlash.</p>
+                    </div>
+
+                    <a href="https://t.me/{{ tg_user }}?text=Assalomu alaykum, menga Figma'da Logotip / Rasm yaratish xizmati kerak edi." id="orderBtn" target="_blank" class="btn-order-glow w-100">
+                        <i class="fab fa-telegram me-2"></i> Buyurtma Berish &rarr;
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Tanlangan xizmatni dinamik almashtirish skripti -->
+    <script>
+        function updateServiceInfo() {
+            const selector = document.getElementById('serviceSelector');
+            const selectedOption = selector.options[selector.selectedIndex];
+            const desc = selectedOption.getAttribute('data-desc');
+            const msg = encodeURIComponent(selectedOption.getAttribute('data-msg'));
+            
+            document.getElementById('serviceDesc').innerText = desc;
+            document.getElementById('orderBtn').href = "https://t.me/{{ tg_user }}?text=" + msg;
+        }
+    </script>
 </body>
 </html>
 """
@@ -593,7 +549,7 @@ LESSON_PAGE_TEMPLATE = """
 
 @app.route("/")
 def home():
-    return render_template_string(INDEX_TEMPLATE, services=SERVICES, lessons=LESSONS, tg_user=TELEGRAM_USER, ig_user=INSTAGRAM_USER)
+    return render_template_string(INDEX_TEMPLATE, lessons=LESSONS, tg_user=TELEGRAM_USER, ig_user=INSTAGRAM_USER)
 
 @app.route("/lesson/<lesson_id>")
 def lesson_page(lesson_id):
