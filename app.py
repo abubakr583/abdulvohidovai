@@ -6,263 +6,385 @@ app = Flask(__name__)
 TELEGRAM_USER = "vip_abdulvohidov"
 INSTAGRAM_USER = "_abhvdv11"
 
-# Barcha darsliklar bazasi (kengaytirilgan va batafsil)
 LESSONS = {
+    # 1-BLOK: SCRATCH DARSLIKLARI
+    "scratch-intro": {
+        "title": "1. Scratch Asoslari: Vizual Bloklar va Spritelar",
+        "category": "Scratch",
+        "time": "10 daqiqa",
+        "badge_class": "badge-scratch",
+        "desc": "Dasturlash mantig'iga kirish: Sprite (qahramonlar), sahna va rangli bloklar bilan ishlash.",
+        "content": """
+<h3>1. Scratch nima va u kimlar uchun?</h3>
+<p>Scratch — MIT universiteti tomonidan yaratilgan vizual blokli dasturlash muhiti. Bu yerda sintaksis xatolari bo'lmaydi, mantiq esa to'liq professional dasturlash kabi ishlaydi.</p>
+
+<h3>2. Asosiy bloklar turlari:</h3>
+<ul>
+    <li><strong>Motion (Harakat - Ko'k):</strong> Qahramonni harakatlantirish (masalan: 10 qadam oldinga, 15 gradus burilish).</li>
+    <li><strong>Looks (Ko'rinish - Binafsharang):</strong> Matn chiqarish ("Salom!"), kostyumni almashtirish, o'lchamni o'zgartirish.</li>
+    <li><strong>Events (Hodisalar - Sariq):</strong> O'yinni boshlash kaliti: <code>Yashil bayroqcha bosilganda</code>, <code>Probel tugmasi bosilganda</code>.</li>
+    <li><strong>Control (Boshqaruv - To'q sariq):</strong> Sikllar va shartlar: <code>Forever (Har doim)</code>, <code>Repeat (Takrorlash)</code>, <code>If...then</code>.</li>
+</ul>
+
+<h3>3. Birinchi sodda animatsiya:</h3>
+<p>Mushukchani harakatlantirish kodi:</p>
+<pre><code>[Qachonki Yashil Bayroq bosilsa]
+[Har doim takrorla]:
+    [10 qadam yur]
+    [Keyingi kostyumga o't]
+    [Agar chetga tegsa, orqaga qayt]</code></pre>
+"""
+    },
+    "scratch-variables-game": {
+        "title": "2. Scratch'da O'zgaruvchilar va Birinchi O'yin",
+        "category": "Scratch",
+        "time": "15 daqiqa",
+        "badge_class": "badge-scratch",
+        "desc": "O'yinlarda ochko hisoblash (Score), jonlar (Lives) va to'qnashuvlarni (Sensors) tekshirish.",
+        "content": """
+<h3>1. O'zgaruvchi (Variable) nima?</h3>
+<p>O'yindagi har qanday raqamli natija — bu o'zgaruvchi. Masalan, olma tutganda ochko ko'payishi yoki to'siqqa tekkanda jon kamayishi.</p>
+
+<h3>2. Olma Tutish (Catch the Apple) o'yini algoritmi:</h3>
+<ol>
+    <li>Savat (Bowl) spriteni yarating va uni sichqoncha koordinatasi bo'yicha harakatlantiring.</li>
+    <li>Olma (Apple) spriteni tepadan pastga qulatish:</li>
+</ol>
+<pre><code>[Qachonki Yashil Bayroq bosilsa]
+[Hisob = 0 qilib belgilansin]
+[Har doim takrorla]:
+    [y o'qini -5 ga o'zgartir (pastga tushish)]
+    [Agar Savatga tegsa]:
+        [Hisobni +1 ga oshir]
+        [x: tasodifiy (-200 dan 200 gacha), y: 160 ga bor]</code></pre>
+<p>Mana shu mantiq barcha zamonaviy o'yinlar fundamentidir!</p>
+"""
+    },
+
+    # 2-BLOK: PYTHON ASOSLARI
     "python-intro": {
-        "title": "1. Python Asoslari, O'zgaruvchilar va Ma'lumot Turlari",
+        "title": "3. Python Sintaksisi va Data Types",
         "category": "Python Asoslari",
         "time": "10 daqiqa",
         "badge_class": "badge-python",
-        "desc": "Dasturlash sintaksisi, o'zgaruvchilarni e'lon qilish, data types va xotirada saqlanishi.",
+        "desc": "O'zgaruvchilar, asosiy turlar: int, float, str, bool va f-string bilan ishlash.",
         "content": """
-<h3>1. Python nima va nega u ommabop?</h3>
-<p>Python — o'qilishi oson, sintaksisi toza va kuchli imkoniyatlarga ega yuqori darajali dasturlash tili. U veb-ishlanmalar (Flask, Django), sun'iy intellekt, ma'lumotlar tahlili va Telegram botlar yaratishda yetakchi hisoblanadi.</p>
+<h3>1. Dinamik tiplash va o'zgaruvchilar</h3>
+<p>Pythonda ma'lumot turlari avtomatik aniqlanadi:</p>
+<pre><code>ism = "Abdulvohidov"   # str (matn)
+yosh = 20               # int (butun son)
+ball = 94.5             # float (o'nlik son)
+status = True           # bool (True/False)
 
-<h3>2. O'zgaruvchilar (Variables)</h3>
-<p>O'zgaruvchi — bu kompyuter xotirasidagi ma'lumot saqlanadigan quticha. Pythonda uning turini oldindan yozish shart emas (dinamik tiplash):</p>
-<pre><code># O'zgaruvchilarni e'lon qilish
-ism = "Abubakr"          # str (matn)
-yosh = 20                # int (butun son)
-narx = 49.99             # float (o'nlik son)
-talabami = True          # bool (mantiqiy: True yoki False)
-
-print(f"Salom, mening ismim {ism}, yoshim {yosh}da.")</code></pre>
-
-<h3>3. Ma'lumot turlarini tekshirish va o'zgartirish</h3>
-<p>Qaysi turdagi ma'lumot ekanligini <code>type()</code> orqali bilib olish mumkin:</p>
-<pre><code>x = "150"
-print(type(x))  # <class 'str'>
-
-# Matnni butun songa aylantirish (Type Casting):
-son_x = int(x)
-print(son_x + 50)  # Natija: 200</code></pre>
-
-<h3>Vazifa:</h3>
-<p>O'zingizning ismingiz, kasbingiz va haftalik o'qish soatingizni o'zgaruvchilarda saqlang va f-string yordamida ekranga chiqaring.</p>
+print(f"Talaba: {ism}, Bali: {ball}")</code></pre>
+<p>Matn va sonlarni birlashtirishda doimo <code>f-string</code> dan foydalaning.</p>
 """
     },
     "python-conditions": {
-        "title": "2. Shart Operatorlari va Sikllar (if, for, while)",
+        "title": "4. Shart Operatorlari: if, elif, else",
+        "category": "Python Asoslari",
+        "time": "12 daqiqa",
+        "badge_class": "badge-python",
+        "desc": "Mantiqiy ifodalar, taqqoslash operatorlari (==, !=, >, <) va shartli boshqaruv.",
+        "content": """
+<h3>1. Shartlar orqali tekshirish</h3>
+<pre><code>yosh = 18
+
+if yosh >= 18:
+    print("Xush kelibsiz! Kirishga ruxsat.")
+elif yosh >= 16:
+    print("Faqat ota-ona ruxsati bilan.")
+else:
+    print("Hali erta, kirish taqiqlanadi.")</code></pre>
+<p>Python bloklarni ajratish uchun jingalak qavslar o'rniga <strong>bo'shliq (Indentation - 4 ta probel)</strong> ishlatadi.</p>
+"""
+    },
+    "python-loops": {
+        "title": "5. Sikllar: for va while",
+        "category": "Python Asoslari",
+        "time": "12 daqiqa",
+        "badge_class": "badge-python",
+        "desc": "Qayta takrorlanuvchi jarayonlar, range funksiyasi, break va continue amallari.",
+        "content": """
+<h3>1. for sikli:</h3>
+<pre><code># 1 dan 10 gacha bo'lgan toq sonlarni chiqarish:
+for son in range(1, 11, 2):
+    print(f"Toq son: {son}")</code></pre>
+
+<h3>2. while sikli va to'xtatish:</h3>
+<pre><code>qadam = 0
+while True:
+    qadam += 1
+    if qadam == 5:
+        print("To'xtatildi!")
+        break</code></pre>
+"""
+    },
+    "python-lists": {
+        "title": "6. Ro'yxatlar (Lists) va Tuple",
+        "category": "Python Asoslari",
+        "time": "14 daqiqa",
+        "badge_class": "badge-python",
+        "desc": "Indekslash, slicing, element qo'shish (append), o'chirish (pop, remove) va saralash.",
+        "content": """
+<h3>1. Ro'yxat metodlari</h3>
+<pre><code>kurslar = ["Python", "Scratch", "Figma"]
+
+kurslar.append("Telegram Bot")  # Oxiriga qo'shish
+kurslar.insert(1, "Django")     # 1-indeksga qo'shish
+kurslar.remove("Scratch")       # O'chirish
+
+print(kurslar[0])     # Python
+print(kurslar[-1])    # Eng oxirgi element
+print(len(kurslar))   # Elementlar soni</code></pre>
+"""
+    },
+    "python-dicts": {
+        "title": "7. Lug'atlar (Dictionaries) va To'plamlar (Sets)",
         "category": "Python Asoslari",
         "time": "15 daqiqa",
         "badge_class": "badge-python",
-        "desc": "Mantiqiy shartlar (if/elif/else), takrorlanuvchi amallar, break va continue tushunchalari.",
+        "desc": "Key-Value arxitekturasi, tezkor qidiruv, takrorlanmas to'plamlar bilan ishlash.",
         "content": """
-<h3>1. Shart operatorlari (if, elif, else)</h3>
-<p>Kod oqimini mantiqiy tekshiruvlar asosida boshqarish:</p>
-<pre><code>ball = 85
-
-if ball >= 90:
-    print("A'lo (A)")
-elif ball >= 75:
-    print("Yaxshi (B)")
-elif ball >= 60:
-    print("Qoniqarli (C)")
-else:
-    print("Imtihondan yiqildi")</code></pre>
-
-<h3>2. Sikllar: for va while</h3>
-<p><strong>for</strong> — ro'yxat, matn yoki berilgan oraliq bo'ylab takrorlash uchun ishlatiladi:</p>
-<pre><code># 1 dan 5 gacha sonlarni chiqarish
-for son in range(1, 6):
-    print(f"Hozirgi qadam: {son}")</code></pre>
-
-<p><strong>while</strong> — berilgan shart rost bo'lib turguncha to'xtovsiz aylanadi:</p>
-<pre><code>hisoblagich = 3
-while hisoblagich > 0:
-    print(f"Boshlanishiga {hisoblagich} soniya qoldi...")
-    hisoblagich -= 1
-print("Start!")</code></pre>
-
-<h3>3. break va continue</h3>
-<ul>
-    <li><code>break</code> — siklni majburan to'xtatadi.</li>
-    <li><code>continue</code> — joriy qadamni tashlab o'tib, keyingi aylanaga o'tadi.</li>
-</ul>
-"""
-    },
-    "python-lists-dicts": {
-        "title": "3. Ro'yxatlar va Lug'atlar (Lists & Dictionaries)",
-        "category": "Ma'lumotlar Tuzilmasi",
-        "time": "12 daqiqa",
-        "badge_class": "badge-python",
-        "desc": "Katta ma'lumotlar bilan ishlash: indexlar, metodlar (append, pop), kalit-qiymat munosabatlari.",
-        "content": """
-<h3>1. Ro'yxatlar (List)</h3>
-<p>Ro'yxat kvadrat qavslar <code>[]</code> ichida saqlanadi va tartiblangan bo'ladi:</p>
-<pre><code>tillari = ["Python", "JavaScript", "C++"]
-
-# Yangi element qo'shish
-tillari.append("Go")
-
-# Elementni indeks orqali olish (0 dan boshlanadi)
-print(tillari[0])  # Python
-
-# O'chirish
-tillari.remove("C++")
-print(tillari)  # ['Python', 'JavaScript', 'Go']</code></pre>
-
-<h3>2. Lug'atlar (Dictionary)</h3>
-<p>Lug'atlar kalit va qiymat (Key-Value) ko'rinishida saqlanadi. Ma'lumotlarni aniq identsifikator bilan topish uchun ideal vosita:</p>
-<pre><code>user = {
-    "id": 101,
-    "ism": "Abdulvohidov",
-    "kasb": "Backend Dasturchi",
-    "loyihalar": ["Telegram Bot", "Veb Portal"]
+<h3>1. Lug'atlar (dict)</h3>
+<pre><code>developer = {
+    "username": "vip_abdulvohidov",
+    "stack": ["Python", "Flask", "aiogram"],
+    "active": True
 }
 
-# Qiymatlarni olish va yangilash
-print(user["ism"])
-user["kasb"] = "Full Stack Engineer"
-print(user.get("kasb"))</code></pre>
+# Xavfsiz qiymat olish:
+stack = developer.get("stack")
+developer["tajriba"] = "2 yil"
+
+print(developer.keys())    # Barcha kalitlar
+print(developer.values())  # Barcha qiymatlar</code></pre>
 """
     },
     "python-functions": {
-        "title": "4. Funksiyalar va Modulli Dasturlash (def, lambda)",
+        "title": "8. Funksiyalar: def, return, *args, **kwargs",
+        "category": "Python Ilg'or",
+        "time": "15 daqiqa",
+        "badge_class": "badge-python",
+        "desc": "Kodni toza va modulli yozish, nomaqbul takrorlanishlarni bartaraf etish.",
+        "content": """
+<h3>1. Mukammal funksiya namunasi:</h3>
+<pre><code>def hisobla_chegirma(narx, foiz=10):
+    chegirma = narx * (foiz / 100)
+    yakuniy = narx - chegirma
+    return yakuniy
+
+print(hisobla_chegirma(100000, 20)) # 80000.0</code></pre>
+"""
+    },
+    "python-oop": {
+        "title": "9. OOP: Obyektga Yo'naltirilgan Dasturlash",
+        "category": "Python Ilg'or",
+        "time": "18 daqiqa",
+        "badge_class": "badge-python",
+        "desc": "Class, __init__ konstruktori, Object, Meros olish (Inheritance) va Encapsulation.",
+        "content": """
+<h3>1. Class va Object</h3>
+<pre><code>class Foydalanuvchi:
+    def __init__(self, ism, status):
+        self.ism = ism
+        self.status = status
+
+    def info(self):
+        return f"{self.ism} - {self.status}"
+
+admin = Foydalanuvchi("Abubakr", "Administrator")
+print(admin.info())</code></pre>
+"""
+    },
+    "python-files-errors": {
+        "title": "10. Fayllar bilan ishlash va Try-Except",
         "category": "Python Ilg'or",
         "time": "14 daqiqa",
         "badge_class": "badge-python",
-        "desc": "Qayta ishlatiluvchi toza kod yozish, argumentlar, return qiymatlari va nomaqbul xatolarni oldini olish.",
+        "desc": "TXT/JSON fayllarni o'qish va yozish, xatoliklarni (Exception handling) to'g'ri ushlash.",
         "content": """
-<h3>1. Funksiya nima?</h3>
-<p>Bir xil kodni qayta-qayta yozmaslik uchun ma'lum bir mantiqni bitta nom ostida jamlash.</p>
-<pre><code>def hisobla_bonus(oylik, foiz=10):
-    bonus = oylik * (foiz / 100)
-    jami = oylik + bonus
-    return jami
+<h3>1. Xatolarni xavfsiz ushlash:</h3>
+<pre><code>try:
+    son = int("salom")
+except ValueError as e:
+    print(f"Xatolik yuz berdi: {e}")
+finally:
+    print("Tekshiruv yakunlandi.")</code></pre>
 
-daromad = hisobla_bonus(5000000, 15)
-print(f"Jami to'lanadigan summa: {daromad} so'm")</code></pre>
-
-<h3>2. Args va Kwargs (*args, **kwargs)</h3>
-<p>Cheksiz miqdordagi argumentlarni qabul qilish usuli:</p>
-<pre><code>def jamla(*sonlar):
-    return sum(sonlar)
-
-print(jamla(10, 20, 30, 40))  # Natija: 100</code></pre>
+<h3>2. Faylga yozish va o'qish:</h3>
+<pre><code>with open("log.txt", "a", encoding="utf-8") as f:
+    f.write("Yangi foydalanuvchi kirdi\\n")</code></pre>
 """
     },
-    "telegram-bot": {
-        "title": "5. Python'da Professional Telegram Bot Yaratish",
-        "category": "Telegram Dev",
-        "time": "20 daqiqa",
-        "badge_class": "badge-tg",
-        "desc": "aiogram 3 orqali tezkor bot, inline tugmalar, callback query va buyruqlarni boshqarish.",
-        "content": """
-<h3>1. Tayyorgarlik va BotFather</h3>
-<p>Telegramda <code>@BotFather</code> ga o'tib <code>/newbot</code> buyrug'i orqali yangi bot va API Token oling.</p>
-<pre><code>pip install aiogram</code></pre>
 
-<h3>2. aiogram orqali bot arxitekturasi</h3>
+    # 3-BLOK: TELEGRAM BOTLAR
+    "tgbot-setup": {
+        "title": "11. aiogram 3: Bot Arxitekturasi va Sozlash",
+        "category": "Telegram Bot",
+        "time": "15 daqiqa",
+        "badge_class": "badge-tg",
+        "desc": "BotFather orqali token olish, aiogram 3 kutubxonasini o'rnatish va asinxron ishga tushirish.",
+        "content": """
+<h3>1. Zamonaviy aiogram 3 kodi:</h3>
 <pre><code>import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 
-TOKEN = "BOT_TOKENINGIZNI_YOZING"
-bot = Bot(token=TOKEN)
+bot = Bot(token="TOKENINGIZ")
 dp = Dispatcher()
 
 @dp.message(Command("start"))
-async def start_handler(message: types.Message):
-    await message.answer(f"Assalomu alaykum, {message.from_user.full_name}! Botga xush kelibsiz!")
+async def cmd_start(msg: types.Message):
+    await msg.answer(f"Salom, {msg.from_user.first_name}! Botimizga xush kelibsiz!")
 
 async def main():
-    print("Bot muvaffaqiyatli ishga tushdi...")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())</code></pre>
 """
     },
-    "figma-basics": {
-        "title": "6. Figma Asoslari: Interfeys, Frame va Asosiy Uskunalar",
-        "category": "Figma Dizayn",
-        "time": "15 daqiqa",
+    "tgbot-keyboards": {
+        "title": "12. Inline va Reply Tugmalar (Keyboards)",
+        "category": "Telegram Bot",
+        "time": "16 daqiqa",
+        "badge_class": "badge-tg",
+        "desc": "Foydalanuvchi uchun qulay menyu, InlineKeyboardMarkup va callback query hodisalarini ushlash.",
+        "content": """
+<h3>1. Inline Tugmalar yasash:</h3>
+<pre><code>from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+tugmalar = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="🛒 Kurslar", callback_data="courses")],
+    [InlineKeyboardButton(text="📞 Bog'lanish", url="https://t.me/vip_abdulvohidov")]
+])</code></pre>
+"""
+    },
+    "tgbot-database": {
+        "title": "13. Botga SQLite Ma'lumotlar Bazasini Ulanish",
+        "category": "Telegram Bot",
+        "time": "18 daqiqa",
+        "badge_class": "badge-tg",
+        "desc": "Foydalanuvchilar ID sini bazada saqlash, takroriy ro'yxatdan o'tishni tekshirish va xabar yuborish.",
+        "content": """
+<h3>1. SQLite bilan ishlash:</h3>
+<pre><code>import sqlite3
+
+conn = sqlite3.connect("users.db")
+cur = conn.cursor()
+
+cur.execute('''CREATE TABLE IF NOT EXISTS users (
+    telegram_id INTEGER PRIMARY KEY,
+    ism TEXT
+)''')
+conn.commit()</code></pre>
+"""
+    },
+    "tgbot-payments": {
+        "title": "14. Telegram Stars va To'lov Tizimlari",
+        "category": "Telegram Bot",
+        "time": "20 daqiqa",
+        "badge_class": "badge-tg",
+        "desc": "Telegram Stars orqali raqamli mahsulot va kurslarni bot orqali avtomatik sotish.",
+        "content": """
+<h3>1. Telegram Stars invoices yaratish:</h3>
+<p>Telegram Stars orqali to'lov qabul qilishda vositachisiz to'g'ridan-to'g'ri Telegram platformasi xizmatidan foydalaniladi.</p>
+<pre><code>from aiogram.types import LabeledPrice
+
+prices = [LabeledPrice(label="Python Darslik", amount=50)] # 50 Telegram Stars</code></pre>
+"""
+    },
+
+    # 4-BLOK: FIGMA & UI/UX DIZAYN
+    "figma-intro": {
+        "title": "15. Figma Asoslari: Ishchi Maydon va Frame'lar",
+        "category": "Figma UI/UX",
+        "time": "12 daqiqa",
         "badge_class": "badge-figma",
-        "desc": "Figma vositalari (Frame, Pen, Shape), o'lchamlar, Desktop va Mobile maketlarini to'g'ri qurish.",
+        "desc": "Interfeys, Frame (F), Shape (R, O), Pen tool va to'g'ri loyiha strukturasini qurish.",
         "content": """
 <h3>1. Nega dasturchiga Figma kerak?</h3>
-<p>Zamonaviy IT sohasida dasturchi dizaynni tushunishi shart. Figma veb-saytlar va mobil ilovalar dizaynini yaratuvchi brauzerga asoslangan eng kuchli grafik vositadir.</p>
-
-<h3>2. Asosiy hotkeylar (Tezkor tugmalar)</h3>
+<p>Sayt yoki ilovani kodlashdan oldin uning barcha elementlari (rangi, joylashuvi, o'lchamlari) Figmada loyihalanadi.</p>
+<h3>2. Standart Frame o'lchamlari:</h3>
 <ul>
-    <li><strong>F (Frame)</strong> — Yangi ramka ochish (Desktop: 1440x1024, iPhone 15: 393x852).</li>
-    <li><strong>R (Rectangle)</strong> — Tugma yoki kartochka uchun to'rtburchak chizish.</li>
-    <li><strong>T (Text)</strong> — Matn yozish.</li>
-    <li><strong>V (Move)</strong> — Oddiy tanlash va siljitish kursoriga qaytish.</li>
-    <li><strong>Space (probel) + Sichqoncha</strong> — Ishchi maydon bo'ylab erkin harakatlanish.</li>
+    <li>Desktop: 1440 x 1024 px</li>
+    <li>Mobile (iPhone 15 Pro): 393 x 852 px</li>
 </ul>
-
-<h3>3. Grid (Kataklar) tizimi</h3>
-<p>Sayt elementlari toza turishi uchun Frame ustiga bosib, o'ng tomondan <strong>Layout Grid</strong> qo'shing:</p>
-<p>Veb-saytlar uchun standart: <strong>Columns -> Count: 12, Margin: 80, Gutter: 24</strong>.</p>
 """
     },
     "figma-autolayout": {
-        "title": "7. Figma Auto Layout va Komponentlar (Shift + A)",
-        "category": "Figma Professional",
-        "time": "18 daqiqa",
+        "title": "16. Auto Layout (Shift + A) Sehri",
+        "category": "Figma UI/UX",
+        "time": "16 daqiqa",
         "badge_class": "badge-figma",
-        "desc": "Moslashuvchan (responsive) tugmalar, kartalar yasash, variantlar va Master Komponentlar.",
+        "desc": "Elementlarni responsive qilish, padding, gap va moslashuvchan tugmalar yaratish.",
         "content": """
-<h3>1. Auto Layout siri nima?</h3>
-<p>Oddiy chizilgan to'rtburchak ichiga matn yozilsa va matn cho'zilsa, to'rtburchak kichik qolib ketadi. <strong>Auto Layout</strong> esa CSS'dagi <code>flexbox</code> kabi ishlaydi — matn cho'zilishi bilan tugma ham avtomatik kattalashadi!</p>
-
-<h3>2. Auto Layout yasash qadamlari:</h3>
-<ol>
-    <li>Matn yozing: masalan "Darsni Boshlash".</li>
-    <li>Klaviaturada <strong>Shift + A</strong> bosing.</li>
-    <li>O'ng tomonda Auto Layout paneli ochiladi:
-        <ul>
-            <li>Horizontal padding: 24px (yon tomonlar masofasi)</li>
-            <li>Vertical padding: 12px (tepa va pastki masofa)</li>
-            <li>Corner radius: 10px (burchaklarni yumaloqlash)</li>
-            <li>Fill: Tugmaga rang berish (masalan neon ko'k: #00f2fe)</li>
-        </ul>
-    </li>
-</ol>
-
-<h3>3. Komponentlar (Ctrl + Alt + K)</h3>
-<p>Bir marta chizilgan elementni (masalan tugma) <strong>Component</strong> qilib qo'ysangiz, saytning 100 ta joyida ishlatsangiz ham, asosiy komponent rangini o'zgartirganingizda 100 ta tugma ham bir onda o'zgaradi!</p>
+<h3>1. Auto Layout qanday ishlaydi?</h3>
+<p>Har qanday matnni tanlab <strong>Shift + A</strong> tugmasini bosing. U avtomatik tarzda moslashuvchan konteynerga aylanadi. Matn ko'payganda ramka ham o'zi kengayadi!</p>
+"""
+    },
+    "figma-components": {
+        "title": "17. Komponentlar va Variantlar (Ctrl + Alt + K)",
+        "category": "Figma UI/UX",
+        "time": "15 daqiqa",
+        "badge_class": "badge-figma",
+        "desc": "Qayta ishlatiluvchi Master Komponentlar, Hover holatlari va dizayn tizimi (Design System).",
+        "content": """
+<h3>1. Master Component nima?</h3>
+<p>Bitta Master tugma yaratib, undan 50 ta nusxa (Instance) olsangiz, asosiy tugmaning rangini o'zgartirganingizda qolgan 50 tasi bir lahzada yangilanadi.</p>
+"""
+    },
+    "figma-typography-colors": {
+        "title": "18. Tipografika, Ranglar va Qorong'u (Dark) Mavzu",
+        "category": "Figma UI/UX",
+        "time": "14 daqiqa",
+        "badge_class": "badge-figma",
+        "desc": "Kontrast qoidalari, neon ranglar palitrasi, Google Fonts (Space Grotesk, Inter) integratsiyasi.",
+        "content": """
+<h3>1. Dark Theme siri:</h3>
+<p>Hech qachon toza qora (#000000) ishlatmang! To'q ko'k yoki kulrang fonlar (#070d1e, #0f172a) neon elementlarni yanada jozibador qiladi.</p>
+"""
+    },
+    "figma-prototyping": {
+        "title": "19. Prototip Yasash va Animatsiyalar",
+        "category": "Figma UI/UX",
+        "time": "16 daqiqa",
+        "badge_class": "badge-figma",
+        "desc": "Sahifalarni bir-biriga bog'lash, Smart Animate, tugmalarning bosilish effektlari.",
+        "content": """
+<h3>1. Smart Animate imkoniyati:</h3>
+<p>Prototype bo'limiga o'tib, tugmani boshqa sahifaga tortasiz. Transition turiga <strong>Smart Animate</strong> qo'ysangiz, elementlar silliq siljiydi.</p>
 """
     },
     "figma-to-code": {
-        "title": "8. Figma Dizaynni Toza HTML & CSS Kodga O'tkazish",
-        "category": "Figma Frontend",
-        "time": "16 daqiqa",
+        "title": "20. Figma'dan Toza CSS va HTML Kodga O'tkazish",
+        "category": "Figma to Web",
+        "time": "18 daqiqa",
         "badge_class": "badge-figma",
-        "desc": "Dev Mode imkoniyatlari, ranglar palitrasi, shriftlar, padding va soyalarni (box-shadow) CSS'ga ko'chirish.",
+        "desc": "Dev Mode, box-shadow, linear-gradient, SVG ikonkalar va loyihani to'liq kodga ko'chirish.",
         "content": """
-<h3>1. Dev Mode (Dasturchi rejimi)</h3>
-<p>Figma yuqori o'ng burchagida <code>&lt;/&gt;</code> belgisini yoqish orqali Dev Mode rejimiga o'tiladi. Istalgan element bosilganda uning aniq CSS qatorlari ko'rinadi:</p>
-
-<h3>2. Neon tugma kodi qanday olinadi?</h3>
-<p>Figma'da Effect -> Drop Shadow beriladi:</p>
-<pre><code>/* Figma generatsiya qiladigan CSS */
+<h3>1. Dizaynni kodga o'girish amaliyoti:</h3>
+<p>Figma Dev Mode sizga tayyor CSS kodlarni beradi:</p>
+<pre><code>/* Neon Tugma CSS */
 background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+box-shadow: 0px 0px 24px rgba(0, 242, 254, 0.7);
 border-radius: 12px;
-box-shadow: 0px 0px 20px rgba(0, 242, 254, 0.7);
 color: #070d1e;
-font-weight: 700;
-padding: 12px 28px;</code></pre>
-
-<h3>3. Dasturchi uchun oltin qoidalar:</h3>
-<ul>
-    <li>Elementlar orasidagi masofani bilish uchun <strong>Alt (Option)</strong> tugmasini bosib turing.</li>
-    <li>Rasmlar va ikonkalar sifatini yo'qotmaslik uchun ularni faqat <strong>SVG</strong> formatda eksport qiling.</li>
-</ul>
+font-weight: bold;</code></pre>
+<p>Shunday qilib dizayn to'g'ridan-to'g'ri veb-saytga aylanadi!</p>
 """
     }
 }
 
-# ASOSIY BOSH SAHIFA
+# ASOSIY SAHIFA
 INDEX_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python & Figma Academy | Abdulvohidov</title>
+    <title>Abdulvohidov Academy | Python, Scratch, Figma</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -271,8 +393,8 @@ INDEX_TEMPLATE = """
             --bg-dark: #070d1e;
             --card-bg: #0f172a;
             --neon-blue: #00f2fe;
-            --neon-purple: #9d4edd;
             --neon-figma: #ff7262;
+            --neon-scratch: #f59e0b;
         }
 
         body {
@@ -288,8 +410,8 @@ INDEX_TEMPLATE = """
             position: fixed;
             top: -20%;
             left: -10%;
-            width: 550px;
-            height: 550px;
+            width: 600px;
+            height: 600px;
             background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
         }
@@ -298,14 +420,14 @@ INDEX_TEMPLATE = """
             position: fixed;
             bottom: -20%;
             right: -10%;
-            width: 600px;
-            height: 600px;
+            width: 650px;
+            height: 650px;
             background: radial-gradient(circle, rgba(157, 78, 221, 0.12) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
         }
 
         .header-title {
-            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #9d4edd 100%);
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #f59e0b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
@@ -319,7 +441,7 @@ INDEX_TEMPLATE = """
             font-weight: 600;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(34, 158, 217, 0.4);
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
         .btn-telegram:hover {
             box-shadow: 0 0 25px rgba(34, 158, 217, 0.8);
@@ -333,7 +455,7 @@ INDEX_TEMPLATE = """
             font-weight: 600;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(220, 39, 67, 0.4);
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
         .btn-instagram:hover {
             box-shadow: 0 0 25px rgba(220, 39, 67, 0.8);
@@ -358,12 +480,21 @@ INDEX_TEMPLATE = """
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
         }
 
+        .badge-scratch {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--neon-scratch);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 8px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
         .badge-python {
             background: rgba(0, 242, 254, 0.1);
             color: var(--neon-blue);
             border: 1px solid rgba(0, 242, 254, 0.3);
             border-radius: 8px;
-            padding: 6px 12px;
+            padding: 5px 12px;
             font-size: 0.8rem;
             font-weight: 600;
         }
@@ -372,7 +503,7 @@ INDEX_TEMPLATE = """
             color: var(--neon-figma);
             border: 1px solid rgba(255, 114, 98, 0.3);
             border-radius: 8px;
-            padding: 6px 12px;
+            padding: 5px 12px;
             font-size: 0.8rem;
             font-weight: 600;
         }
@@ -381,7 +512,7 @@ INDEX_TEMPLATE = """
             color: #229ED9;
             border: 1px solid rgba(34, 158, 217, 0.3);
             border-radius: 8px;
-            padding: 6px 12px;
+            padding: 5px 12px;
             font-size: 0.8rem;
             font-weight: 600;
         }
@@ -425,12 +556,12 @@ INDEX_TEMPLATE = """
     <div class="container">
         <header class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3 pb-3 border-bottom border-secondary border-opacity-25">
             <div>
-                <h2 class="header-title mb-1">⚡ PYTHON & FIGMA ACADEMY</h2>
-                <p class="text-secondary small mb-0">Professional Dasturlash va UI/UX Dizayn Kursi</p>
+                <h2 class="header-title mb-1">⚡ ABDULVOHIDOV ACADEMY</h2>
+                <p class="text-secondary small mb-0">Scratch, Python & Figma — 20 ta Professional Amaliy Dars</p>
             </div>
             <div class="d-flex gap-2">
                 <a href="https://t.me/{{ tg_user }}" target="_blank" class="btn btn-telegram px-3 py-2">
-                    <i class="fab fa-telegram me-1"></i> Telegram Kanal
+                    <i class="fab fa-telegram me-1"></i> Telegram
                 </a>
                 <a href="https://instagram.com/{{ ig_user }}" target="_blank" class="btn btn-instagram px-3 py-2">
                     <i class="fab fa-instagram me-1"></i> Instagram
@@ -460,13 +591,13 @@ INDEX_TEMPLATE = """
             </div>
 
             <div class="col-lg-4">
-                <div class="profile-card mb-4">
+                <div class="profile-card mb-4 sticky-top" style="top: 20px;">
                     <div class="mb-3">
-                        <i class="fas fa-user-astronaut fa-4x text-info"></i>
+                        <i class="fas fa-laptop-code fa-4x text-info"></i>
                     </div>
                     <h4 class="fw-bold mb-1">Abdulvohidov</h4>
-                    <p class="text-secondary small mb-3">Python & UI/UX Developer</p>
-                    <p class="small text-light">Python orqali server dasturlari va botlar yaratishni, hamda Figma orqali zamonaviy IT dizaynlarini noldan yasashni o'rganing.</p>
+                    <p class="text-secondary small mb-3">Full-Stack & UI/UX Mentor</p>
+                    <p class="small text-light">Scratch orqali mantiqni, Python orqali backend va botlarni, hamda Figma orqali chiroyli dizayn yaratishni to'liq o'rganing.</p>
                     <hr class="border-secondary my-3">
                     <div class="d-grid gap-2">
                         <a href="https://t.me/{{ tg_user }}" target="_blank" class="btn btn-telegram py-2">
@@ -477,12 +608,6 @@ INDEX_TEMPLATE = """
                         </a>
                     </div>
                 </div>
-
-                <div class="lesson-card text-center p-4">
-                    <i class="fab fa-figma fa-3x mb-3 text-danger"></i>
-                    <h5 class="fw-bold">Figma & Python Integratsiyasi</h5>
-                    <p class="text-secondary small mb-0">Figma'da go'zal dizayn chizib, uni Flask yoki Bot orqali to'liq ishlaydigan loyihaga aylantirish ko'nikmasi.</p>
-                </div>
             </div>
         </div>
     </div>
@@ -490,7 +615,7 @@ INDEX_TEMPLATE = """
 </html>
 """
 
-# ALOHIDA KATTA TO'LIQ DARSLIK SAHIFASI
+# KATTA DARSLIK SAHIFASI
 LESSON_PAGE_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="uz">
@@ -526,9 +651,7 @@ LESSON_PAGE_TEMPLATE = """
             font-size: 0.95rem;
             overflow-x: auto;
         }
-        code {
-            color: #00f2fe;
-        }
+        code { color: #00f2fe; }
         .btn-back {
             background: linear-gradient(90deg, #00f2fe, #4facfe);
             color: #070d1e;
@@ -578,7 +701,7 @@ LESSON_PAGE_TEMPLATE = """
             <hr class="border-secondary my-4">
             <div class="d-flex justify-content-between align-items-center">
                 <span class="text-secondary small">Muallif: Abdulvohidov</span>
-                <a href="/" class="btn-back">Keyingi dars &rarr;</a>
+                <a href="/" class="btn-back">Bosh sahifaga qaytish &rarr;</a>
             </div>
         </div>
     </div>
